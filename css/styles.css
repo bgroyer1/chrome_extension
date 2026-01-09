@@ -9,6 +9,8 @@
   --bg: #dddddd;
   --accent: #5f9341;
   --white: whitesmoke;
+  --error-message: #dc2626;
+  --link-color: #2563EB;
   --input-background: #e7f0fe;
 }
 
@@ -53,18 +55,33 @@ select {
 
 #input-el {
   padding: 0.5em 1.5em;
-  border: var(--accent) 2px solid ;
+  border: var(--accent) 2px solid;
 }
 
 #input-el:focus,
 #input-el:hover {
-  outline: var(--accent); 
+  outline: var(--accent);
   background: var(--input-background);
+}
+
+#error-span {
+  font-style: italic;
+  color: var(--error-message);
+  min-height: 1.5rem;
+}
+
+.list-item {
+  text-decoration: underline;
+  color: var(--link-color);
+}
+
+.list-item::marker {
+  color: var(--accent)
 }
 
 button {
   background: none;
-  padding: 0.5em 1.5em; 
+  padding: 0.5em 1.5em;
   border: none;
   cursor: pointer;
   font-weight: 700;
@@ -74,6 +91,10 @@ button {
   align-self: start;
   background-color: var(--accent);
   color: var(--white);
+}
+
+ul {
+  padding: 0 1em;
 }
 
 h1,

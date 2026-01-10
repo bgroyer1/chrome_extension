@@ -67,10 +67,12 @@ select {
 #error-span {
   font-style: italic;
   color: var(--error-message);
-  min-height: 1.5rem;
+  font-size: .9rem;
+  min-height: 1.25rem;
 }
 
 .list-item {
+  cursor: pointer;
   text-decoration: underline;
   color: var(--link-color);
 }

@@ -7,7 +7,7 @@ const myLeads = [];
 
 /* Functions */
 function saveLead() {
-  let value = inputEl.value.trim();
+  let value = inputEl.value.trim().toLowerCase();
 
   if (!value) {
     errorSpan.textContent = "Empty input";

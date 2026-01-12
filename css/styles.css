@@ -8,6 +8,7 @@
   --text: #111111;
   --bg: #dddddd;
   --accent: #5f9341;
+  --accent-hover: #4e7a36;
   --white: whitesmoke;
   --error-message: #dc2626;
   --link-color: #2563EB;
@@ -22,6 +23,7 @@ body {
   line-height: 1.5;
   color: var(--text);
   background-color: var(--bg);
+  min-width: 330px;
 }
 
 img,
@@ -36,6 +38,12 @@ canvas {
 a {
   color: inherit;
   text-decoration: none;
+  color: var(--accent);
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-hover)
 }
 
 button,
@@ -73,8 +81,7 @@ select {
 
 .list-item {
   cursor: pointer;
-  text-decoration: underline;
-  color: var(--link-color);
+  list-style-type: none;
 }
 
 .list-item::marker {
@@ -96,7 +103,7 @@ button {
 }
 
 ul {
-  padding: 0 1em;
+  padding: 0;
 }
 
 h1,

@@ -43,6 +43,7 @@ a {
 
 a:hover,
 a:focus {
+  text-decoration: underline;
   color: var(--accent-hover)
 }
 

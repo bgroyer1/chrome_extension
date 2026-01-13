@@ -3,7 +3,15 @@ const inputBtn = document.querySelector("#input-btn");
 const inputEl = document.querySelector("#input-el");
 const ulEl = document.querySelector("#ul-el");
 const errorSpan = document.querySelector("#error-span");
-const myLeads = [];
+let myLeads = [];
+
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem('myLeads'))
+
+if (leadsFromLocalStorage) {
+  myLeads = leadsFromLocalStorage
+  renderList(myLeads)
+} 
+
 
 /* Functions */
 function saveLead() {
@@ -21,19 +29,19 @@ function saveLead() {
   if (!myLeads.includes(value)) {
     errorSpan.textContent = "";
     myLeads.push(value);
-    inputEl.value = "";
-    localStorage.setItem('myLeads', JSON.stringify(myLeads))
-    renderList();
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    renderList(myLeads);
   } else {
     errorSpan.textContent = `Item already added`;
   }
+  inputEl.value = ""; 
 }
 
-function renderList() {
+function renderList(leadsArr) {
   let listHTML = "";
-  myLeads.forEach((lead) => {
+  for (let lead of leadsArr) {
     listHTML += `<li class='list-item'><a target='_blank' href='${lead}'>${lead}</a></li>`;
-  });
+  };
   ulEl.innerHTML = listHTML;
 }
 

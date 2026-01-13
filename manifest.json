@@ -2,8 +2,20 @@
   "manifest_version": 3,
   "version": "1.0",
   "name": "Leads Tracker",
+  "permissions": ["activeTab", "tabs"],
   "action": {
-    "default_popup": "./index.html",
-    "default_icon": "./img/favicon_io(1)/favicon.ico"
-  }
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "img/favicon/favicon.ico",
+      "32": "img/favicon/favicon.ico",
+      "48": "img/favicon/favicon.ico",
+      "128": "img/favicon/favicon.ico"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "leads-tracker@example.com"
+    }
+  },
+  "host_permissions": ["*://*/*"]
 }

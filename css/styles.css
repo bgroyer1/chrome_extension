@@ -23,7 +23,7 @@ body {
   line-height: 1.5;
   color: var(--text);
   background-color: var(--bg);
-  min-width: 330px;
+  min-width: 500px;
 }
 
 img,
@@ -84,6 +84,7 @@ select {
 .list-item {
   cursor: pointer;
   list-style-type: none;
+  margin-bottom: 0.25em;
 }
 
 .list-item::marker {

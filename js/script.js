@@ -1,5 +1,6 @@
 /* Global Variables */
 const inputBtn = document.querySelector("#input-btn");
+const tabBtn = document.querySelector("#tab-btn")
 const inputEl = document.querySelector("#input-el");
 const ulEl = document.querySelector("#ul-el");
 const errorSpan = document.querySelector("#error-span");
@@ -46,12 +47,22 @@ function renderList(leadsArr) {
   ulEl.innerHTML = listHTML;
 }
 
+
 /* Event Listeners */
 inputBtn.addEventListener("click", () => {
   saveLead();
 });
 
-
+tabBtn.addEventListener('click', async () => {
+  const [tab] = await browser.tabs.query({
+    active: true,
+    currentWindow: true
+  })
+  console.log(tab.url)
+  myLeads.push(tab.url)
+  localStorage.setItem('myLeads', JSON.stringify(myLeads))
+  renderList(myLeads)
+})
 
 deleteAllBtn.addEventListener("click", () => {
 let userConfirmed = confirm('Delete all links?')
@@ -63,3 +74,5 @@ if (userConfirmed) {
   return;
 }
 })
+
+console.log(typeof browser)

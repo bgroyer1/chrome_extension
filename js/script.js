@@ -21,25 +21,23 @@ function saveLead() {
   if (!myLeads.includes(value)) {
     errorSpan.textContent = "";
     myLeads.push(value);
+      inputEl.value = "";
   } else {
     errorSpan.textContent = `Item already added`;
   }
 }
 
-function renderLeadsHTML() {
+function renderList() {
   let listHTML = "";
   myLeads.forEach((lead) => {
     listHTML += `<li class='list-item'><a target='_blank' href='${lead}'>${lead}</a></li>`;
   });
-  return listHTML;
+  ulEl.innerHTML = listHTML
 }
 
-function renderList() {
-  saveLead();
-  const listHTML = renderLeadsHTML();
-  ulEl.innerHTML = listHTML;
-  inputEl.value = "";
-}
 
 /* Event Listeners */
-inputBtn.addEventListener("click", renderList);
+inputBtn.addEventListener("click", () => {
+  saveLead();
+  renderList();
+});

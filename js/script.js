@@ -1,13 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
-
-const firebaseConfig = {
-  databaseURL: 'https://leads-tracker-app-57da1-default-rtdb.firebaseio.com/',
-}
-
-const app = initializeApp(firebaseConfig)
-const database = getDatabase(app)
-
 /* Global Variables */
 const inputBtn = document.querySelector("#input-btn");
 const tabBtn = document.querySelector("#tab-btn");

@@ -11,7 +11,7 @@
   --accent-hover: #4e7a36;
   --white: whitesmoke;
   --error-message: #dc2626;
-  --link-color: #2563EB;
+  --link-color: #2563eb;
   --input-background: #e7f0fe;
 }
 
@@ -44,7 +44,7 @@ a {
 a:hover,
 a:focus {
   text-decoration: underline;
-  color: var(--accent-hover)
+  color: var(--accent-hover);
 }
 
 button,
@@ -76,7 +76,7 @@ select {
 #error-span {
   font-style: italic;
   color: var(--error-message);
-  font-size: .9rem;
+  font-size: 0.9rem;
   min-height: 1.25rem;
 }
 
@@ -86,7 +86,7 @@ select {
 }
 
 .list-item::marker {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 button {
@@ -95,12 +95,24 @@ button {
   border: none;
   cursor: pointer;
   font-weight: 700;
+  background-color: var(--accent);
+  color: var(--white);
+  border: 2px solid var(--accent);
+}
+
+button:hover,
+button:focus {
+  opacity: 0.8;
 }
 
 #input-btn {
-  align-self: start;
   background-color: var(--accent);
   color: var(--white);
+}
+
+#delete-btn {
+  background-color: var(--white);
+  color: var(--accent);
 }
 
 ul {

@@ -3,6 +3,7 @@ const inputBtn = document.querySelector("#input-btn");
 const inputEl = document.querySelector("#input-el");
 const ulEl = document.querySelector("#ul-el");
 const errorSpan = document.querySelector("#error-span");
+const deleteAllBtn = document.querySelector('#delete-btn')
 let myLeads = [];
 
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem('myLeads'))
@@ -49,3 +50,16 @@ function renderList(leadsArr) {
 inputBtn.addEventListener("click", () => {
   saveLead();
 });
+
+
+
+deleteAllBtn.addEventListener("click", () => {
+let userConfirmed = confirm('Delete all links?')
+if (userConfirmed) {
+  myLeads = []
+  localStorage.clear();
+  renderList(myLeads)
+} else {
+  return;
+}
+})

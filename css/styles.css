@@ -39,6 +39,7 @@ a {
   color: inherit;
   text-decoration: none;
   color: var(--accent);
+  font-size: 1.25rem;
 }
 
 a:hover,

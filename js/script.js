@@ -53,17 +53,6 @@ inputBtn.addEventListener("click", () => {
   saveLead();
 });
 
-tabBtn.addEventListener('click', async () => {
-  const [tab] = await browser.tabs.query({
-    active: true,
-    currentWindow: true
-  })
-  console.log(tab.url)
-  myLeads.push(tab.url)
-  localStorage.setItem('myLeads', JSON.stringify(myLeads))
-  renderList(myLeads)
-})
-
 deleteAllBtn.addEventListener("click", () => {
 let userConfirmed = confirm('Delete all links?')
 if (userConfirmed) {
@@ -75,4 +64,52 @@ if (userConfirmed) {
 }
 })
 
-console.log(typeof browser)
+// copilot code 
+// Cross-browser helper to get the active tab in the current window.
+// Prefers the promise-based `browser.tabs.query` (Firefox), falls back to `chrome.tabs.query`.
+async function getActiveTab() {
+  if (typeof browser !== 'undefined' && browser.tabs && browser.tabs.query) {
+    const tabs = await browser.tabs.query({active: true, currentWindow: true});
+    return tabs && tabs[0]
+  }
+
+  if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
+    return new Promise((resolve, reject) => {
+      chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        if (chrome.runtime && chrome.runtime.lastError) {
+          return reject(new Error(chrome.runtime.lastError.message))
+        }
+        resolve(tabs && tabs[0])
+      })
+    })
+  }
+  throw new Error('Tabs API is not available in this environment')
+}
+
+tabBtn.addEventListener('click', async () => {
+  try {
+    const tab = await getActiveTab();
+    if (!tab) {
+      errorSpan.textContent = 'No active tab found';
+      return;
+    }
+
+    const url = tab.url;
+    if (!url) {
+      errorSpan.textContent = 'Active tab has no URL';
+      return;
+    }
+
+    if (!myLeads.includes(url)) {
+      myLeads.push(url);
+      localStorage.setItem('myLeads', JSON.stringify(myLeads));
+      renderList(myLeads);
+      errorSpan.textContent = '';
+    } else {
+      errorSpan.textContent = 'Item already added';
+    }
+  } catch (err) {
+    console.error('Error getting active tab:', err);
+    errorSpan.textContent = err.message || 'Could not get active tab';
+  }
+});

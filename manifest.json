@@ -3,13 +3,19 @@
   "version": "1.0",
   "name": "Leads Tracker",
   "permissions": ["activeTab", "tabs"],
+  "icons": {
+    "16": "img/favicon/favicon-16x16.png",
+    "32": "img/favicon/favicon-32x32.png",
+    "48": "img/favicon/favicon-32x32.png",
+    "128": "img/favicon/android-chrome-192x192.png"
+  },
   "action": {
     "default_popup": "index.html",
     "default_icon": {
-      "16": "img/favicon/favicon.ico",
-      "32": "img/favicon/favicon.ico",
-      "48": "img/favicon/favicon.ico",
-      "128": "img/favicon/favicon.ico"
+      "16": "img/favicon/favicon-16x16.png",
+      "32": "img/favicon/favicon-32x32.png",
+      "48": "img/favicon/favicon-32x32.png",
+      "128": "img/favicon/android-chrome-192x192.png"
     }
   },
   "browser_specific_settings": {

@@ -21,7 +21,9 @@ function saveLead() {
   if (!myLeads.includes(value)) {
     errorSpan.textContent = "";
     myLeads.push(value);
-      inputEl.value = "";
+    inputEl.value = "";
+    localStorage.setItem('myLeads', JSON.stringify(myLeads))
+    renderList();
   } else {
     errorSpan.textContent = `Item already added`;
   }
@@ -32,12 +34,10 @@ function renderList() {
   myLeads.forEach((lead) => {
     listHTML += `<li class='list-item'><a target='_blank' href='${lead}'>${lead}</a></li>`;
   });
-  ulEl.innerHTML = listHTML
+  ulEl.innerHTML = listHTML;
 }
-
 
 /* Event Listeners */
 inputBtn.addEventListener("click", () => {
   saveLead();
-  renderList();
 });
